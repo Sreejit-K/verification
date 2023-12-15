@@ -90,6 +90,7 @@ export class ScanQrCodeComponent implements OnInit {
           this.restartScanning();
         }
       } catch (error) {
+        console.log(error);
         this.loader = false;
         this.invalidQRCode = true;
         this.restartScanning();
@@ -127,11 +128,10 @@ export class ScanQrCodeComponent implements OnInit {
   }
 
   fetchCredential(credentialId: string) {
-    this.credentialService.getToken().pipe(switchMap(_ =>
-      this.credentialService.getCredentialById(credentialId).pipe(map(res => {
+    console.log("credID:" , credentialId);
+    this.credentialService.getCredentialById(credentialId).pipe(map(res => {
         return res.result;
-      })))
-    ).subscribe((res: any) => {
+      })).subscribe((res: any) => {
       this.loader = false;
       this.credential = res;
     }, (error: any) => {

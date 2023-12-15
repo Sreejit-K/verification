@@ -1,19 +1,19 @@
 <div class="container text-center">
     <div class="text-center" *ngIf="scanQrCode">
-        <h4 class="ver-portal">ULP verification portal</h4>
+        <h4 class="ver-portal">Verification portal</h4>
         <img class="mt-5" src="assets/images/scanner.png" alt="scanner">
         <p class="scan-ler text-center">{{'SCAN_LEARNER_PASSPORT' | translate}}</p>
         <div class="scan-btn">
             <button type="button" class="btn-scan" (click)="scan()">{{'SCAN_NOW' | translate}}</button>
         </div>
 
-        <div class="or mt-4">{{'OR' | translate}}</div>
+        <!-- <div class="or mt-4">{{'OR' | translate}}</div>
         <div class="container">
             <p class="scan-ler text-center">{{'BENEFIT_PROVIDER' | translate}}</p>
             <div class="scan-btn d-flex justify-content-center">
                 <button type="button" class="btn-scan mb-5">{{'CLICK_HERE' | translate}}</button>
             </div>
-        </div>
+        </div> -->
     </div>
 
     <div class="ptt-2">

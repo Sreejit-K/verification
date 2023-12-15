@@ -9,6 +9,9 @@ import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import * as config from '../../assets/config/config.json';
 import { DataService } from '../services/data.service';
+import { CredentialService } from '../services/credential/credential.service';
+
+
 
 
 @Component({
@@ -19,6 +22,7 @@ import { DataService } from '../services/data.service';
 export class DocViewComponent implements OnInit {
     baseUrl: string;
     docUrl: string;
+    htmlString: string;
     extension;
     document = [];
     loader: boolean = true;
@@ -37,7 +41,8 @@ export class DocViewComponent implements OnInit {
         private location: Location,
         //private authService: AuthService,
         private activatedRoute: ActivatedRoute,
-        private dataService: DataService
+        private dataService: DataService,
+        private readonly credentialService: CredentialService
 
     ) {
         this.baseUrl = config.bffUrl;
@@ -105,10 +110,8 @@ export class DocViewComponent implements OnInit {
     }
 
     getPDF(template) {
-        let token = localStorage.getItem('token');
         let headerOptions = new HttpHeaders({
-            'Accept': 'application/pdf',
-            'Authorization': 'Bearer ' + token
+            'Accept': 'application/pdf'
         });
         let requestOptions = { headers: headerOptions, responseType: 'blob' as 'json' };
         const credential_schema = this.credential.credential_schema;
